@@ -1,11 +1,6 @@
-import importlib
 import logging
-import pkgutil
 
 import click
-
-from devcli.context import DevCliContext
-
 
 
 @click.group()

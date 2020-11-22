@@ -2,12 +2,16 @@
 name = "devcli"
 version = "0.1.0"
 description = ""
-authors = ["Job <jgdenoo@gmail.com>"]
+authors = ["Job de Noo <jgdenoo@gmail.com>"]
+homepage = "https://github.com/devnoo/dev-cli/"
+repository = "https://github.com/devnoo/dev-cli/"
 packages = [
     { include = "devcli" },
     { include = "devcli_gitlab" },
     { include = "devcli_poetry_install" },
 ]
+license = "MIT"
+
 [tool.poetry.dependencies]
 python = "^3.8"
 python-gitlab = "^2.5.0"
