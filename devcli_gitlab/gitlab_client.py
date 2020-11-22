@@ -45,8 +45,12 @@ class GitlabClient:
         logging.info(f'response for group: {group_path}: {response}')
         return response['data']['group']['projects']['nodes']
 
+    def do_for_every_project(self, group, func, fail_on_failure=False):
 
-    def do_for_every_project(self, group, func):
         for project in self.get_projects(group):
             gl_project = self.rest_client.projects.get(project['fullPath'], lazy=True)
-            func(gl_project)
+            logging.info(f'processing project: {gl_project.id}')
+            try:
+                func(gl_project)
+            except Exception as e:
+                logging.error(f'error during project {gl_project.id}', e)
