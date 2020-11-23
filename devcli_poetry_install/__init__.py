@@ -1,8 +1,6 @@
 import logging
-import os
-from pathlib import Path
-
 import subprocess
+from pathlib import Path
 
 
 def install_script(path: Path):

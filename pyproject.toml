@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "devcli"
-version = "0.1.1"
+version = "0.1.4"
 description = ""
 authors = ["Job de Noo <jgdenoo@gmail.com>"]
 homepage = "https://github.com/devnoo/dev-cli/"
@@ -9,13 +9,13 @@ packages = [
     { include = "devcli" },
     { include = "devcli_gitlab" },
     { include = "devcli_poetry_install" },
+    { include = "devcli_npm_install" },
 ]
 license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.8"
 python-gitlab = "^2.5.0"
-gitlabber = "^1.1.0"
 python-graphql-client = "^0.4.0"
 click = "^7.1.2"
 cachetools = "^4.1.1"

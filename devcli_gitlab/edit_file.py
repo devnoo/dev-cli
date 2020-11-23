@@ -1,3 +1,4 @@
+import base64
 import importlib
 
 import click
@@ -12,7 +13,7 @@ from devcli_gitlab.gitlab_group import gitlab
 @click.option('--name')
 @click.option('--script', type=click.Path(exists=True))
 @click.option('--message')
-@click.option('--dry_run/--save', False)
+@click.option('--dry_run/--save', default=False)
 @click.pass_obj
 def edit_file(client: GitlabClient, group, name, script, message, dry_run):
 
@@ -29,12 +30,19 @@ def edit_file_function(file_name, script, message, dry_run):
         try:
             f = project.files.get(file_path=file_name, ref='master')
             f.content = f.decode()
-            edit_script.edit_file(project, f)
-            if not dry_run:
-                f.save(branch='master', commit_message=message)
-            if dry_run:
-                print('-------------altered file content -----------')
-                print(f.content)
+            # f.content = base64.b64decode(f.content).decode('utf-8')
+
+            def save_cb():
+                print('in save_cb')
+                if dry_run:
+                    print('-------------altered file content -----------')
+                    print(f.content)
+                else:
+                    f.save(branch='master', commit_message=message)
+
+            edit_script.edit_file(project, f, save_cb)
+
+
         except GitlabGetError as e:
             print(e)
             if e.response_code == 404:
