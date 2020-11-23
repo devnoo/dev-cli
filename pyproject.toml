@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "devcli"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["Job de Noo <jgdenoo@gmail.com>"]
 homepage = "https://github.com/devnoo/dev-cli/"
@@ -19,6 +19,7 @@ gitlabber = "^1.1.0"
 python-graphql-client = "^0.4.0"
 click = "^7.1.2"
 cachetools = "^4.1.1"
+"ruamel.yaml" = "^0.16.12"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
