@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "devcli"
-version = "0.1.4"
+version = "0.1.5"
 description = ""
 authors = ["Job de Noo <jgdenoo@gmail.com>"]
 homepage = "https://github.com/devnoo/dev-cli/"
