@@ -1,15 +1,12 @@
-__version__ = '0.1.0'
-
 import importlib
-import logging
 import pkgutil
 
-from devcli.context import DevCliContext
-from devcli.devcli import cli
+from click.testing import CliRunner
+from glcli.glcli import GitlabContext
 
-logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.INFO)
+from devcli import devcli
 
-
+context = GitlabContext.from_config_file()
 def load_plugins():
     return {
         name: importlib.import_module(name)
@@ -20,8 +17,7 @@ def load_plugins():
 
 
 plugins = load_plugins()
+runner = CliRunner()
+result = runner.invoke(devcli.cli, ['--group', 'dearhealth', '--import'])
 
 
-def run():
-
-    cli(obj={})

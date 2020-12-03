@@ -26,10 +26,12 @@ def edit_file_function(file_name, script, message, dry_run):
     edit_script = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(edit_script)
 
-    def edit_file(project):
+    def edit_file(project, client):
         try:
             f = project.files.get(file_path=file_name, ref='master')
             f.content = f.decode()
+            if hasattr(f.content, 'decode'):
+                f.content = f.content.decode('utf-8')
             # f.content = base64.b64decode(f.content).decode('utf-8')
 
             def save_cb():

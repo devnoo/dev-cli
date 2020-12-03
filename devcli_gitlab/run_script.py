@@ -3,6 +3,8 @@ import importlib
 import click
 import gitlab
 
+from devcli_gitlab import GitlabClient
+
 
 @gitlab.command()
 @click.option('--group')

@@ -51,6 +51,6 @@ class GitlabClient:
             gl_project = self.rest_client.projects.get(project['fullPath'], lazy=True)
             logging.info(f'processing project: {gl_project.id}')
             try:
-                func(gl_project)
+                func(gl_project, self.ctx)
             except Exception as e:
-                logging.error(f'error during project {gl_project.id}', e)
+                logging.exception(f'error during project {gl_project.id}')
