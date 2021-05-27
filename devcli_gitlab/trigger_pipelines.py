@@ -16,5 +16,5 @@ def trigger_pipelines(client: GitlabClient, group, variables:List, include_token
     if include_token_under:
         variables.append({'key': include_token_under, 'value': client.token})
 
-    client.do_for_every_project(group, lambda project: project.pipelines.create({'ref': 'master', 'variables': variables}))
+    client.do_for_every_project(group, lambda project, ctx: project.pipelines.create({'ref': 'master', 'variables': variables}))
 
